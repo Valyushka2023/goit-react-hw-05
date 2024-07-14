@@ -1,0 +1,46 @@
+.moviesPage {
+  padding-left:  20px;
+  margin-bottom:  40px;
+  margin-top: 40px;
+}
+
+.form {
+  display: flex;
+  max-width: 696px;
+  padding: 5px;
+  padding-left: 5px;
+  padding-bottom: 40px;
+}
+
+.input {
+  flex: 1;
+  margin-right: 16px;
+  padding: 10px;
+  font-size: 24px;
+  border-radius: 8px;
+  border: 1px solid gray;
+  cursor: pointer;
+  color: blueviolet;
+  color: rgb(22, 21, 21);
+
+  
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 24px;
+  border-radius: 8px;
+  border: 1px solid rgb(128, 128, 128);
+  cursor: pointer;
+  color: black;
+}
+
+button:hover {
+  border-color: #4e07d1;
+} 
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}  
+  

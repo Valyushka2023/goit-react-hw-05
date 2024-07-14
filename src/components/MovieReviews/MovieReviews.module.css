@@ -1,0 +1,17 @@
+.reviewsList {
+  list-style: none;
+  padding: 0;
+}
+
+.reviewItem {
+  margin-bottom: 20px;
+}
+
+.reviewItem h4 {
+  margin: 0 0 10px;
+}
+
+.noReviews{
+  font-size: 22px;
+  color: red;
+}
