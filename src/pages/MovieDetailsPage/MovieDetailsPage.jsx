@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense, lazy } from 'react';
+import { useState, useEffect, Suspense, lazy, useRef } from 'react';
 import { useParams, useNavigate, useLocation, Link, Route, Routes } from 'react-router-dom';
 import { fetchMovieDetails } from '../../api/tmdbApi';
 import Loader from '../../components/Loader/Loader';
@@ -13,7 +13,7 @@ const MovieDetailsPage = () => {
   const location = useLocation();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
-  const backLocation = location.state?.from || "/movies";
+  const backLocationRef = useRef(location.state?.from || "/movies");
 
   useEffect(() => {
     const getMovieDetails = async () => {
@@ -43,8 +43,10 @@ const MovieDetailsPage = () => {
     <div className={css.movieDetailsPage}>
       <button
         className={css.backButton}
-        onClick={() =>
-          navigate(backLocation)}>Go back</button>
+        onClick={() => navigate(backLocationRef.current)}
+      >
+        Go back
+      </button>
       
       {movie && (
       <>
@@ -54,15 +56,16 @@ const MovieDetailsPage = () => {
           alt={movie.title}
           className={css.moviePoster}
         />
-      <div>
+        <div className={css.description}>
               <h2>{movie.title} ({releaseYear})</h2>
-        <p className={css.rating}><span className={css.label}>User Score:</span> {Math.round(movie.vote_average * 10)}%</p>
-        <h3>Overview</h3>
-        <p className={css.overview}>{movie.overview}</p>
-        <h4>Genres</h4>
-              <p className={css.genres}>{movie.genres.map(genre => genre.name).join(', ')}</p>
-          </div>
+              
+          <p className={css.rating}><span className={css.label}>User Score:</span> {Math.round(movie.vote_average * 10)}%</p>
+          <h3>Overview</h3>
+          <p className={css.overview}>{movie.overview}</p>
+          <h4>Genres</h4>
+          <p className={css.genres}>{movie.genres.map(genre => genre.name).join(', ')}</p>
         </div>
+      </div>
   
       <div className={css.additionalInfo}>
         <h5>Additional information</h5>
@@ -85,8 +88,8 @@ const MovieDetailsPage = () => {
         </Routes>
       </Suspense>
     </div>
-      
   );
 };
 
 export default MovieDetailsPage;
+

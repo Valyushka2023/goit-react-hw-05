@@ -1,3 +1,16 @@
+.movieList {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 20px;
+  column-gap: 20px;
+  list-style: none;
+}
+
+.linkMovieList{
+  display: block;
+  width: 150px;
+}
+
 .list {
   list-style-type: circle, black; 
   padding-left: 20px;
@@ -5,7 +18,7 @@
 
 .item {
   margin-bottom: 10px;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 .link {
@@ -17,4 +30,7 @@
   color: blue;
 }
 
-
+.imgMovieList {
+  width: 150px;
+  height: 220px;
+}
