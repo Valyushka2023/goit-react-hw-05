@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams} from 'react-router-dom';
 import { searchMovies } from '../../api/tmdbApi';
 import MovieList from '../../components/MovieList/MovieList';
 import css from './MoviesPage.module.css';
@@ -7,7 +7,7 @@ import css from './MoviesPage.module.css';
 const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
-  const navigate = useNavigate();
+
 
   const query = searchParams.get('query') || '';
 
@@ -36,10 +36,8 @@ const MoviesPage = () => {
     }
   };
 
-  const handleMovieClick = (movieId) => {
-    navigate(`/movies/${movieId}`, { state: { from: `/movies?query=${query}` } });
-  };
 
+  
   return (
     <div className={css.moviesPage}>
       <form onSubmit={handleSearch} className={css.form}>
@@ -52,7 +50,7 @@ const MoviesPage = () => {
         />
         <button type="submit" className={css.button}>Search</button>
       </form>
-      <MovieList movies={movies} onMovieClick={handleMovieClick} />
+      <MovieList movies={movies} />
     </div>
   );
 };
